@@ -22,7 +22,12 @@ def checkout(skus):
 
     for sku in skus:
         if sku in prices:
+            counts[sku] = counts.get(sku, 0) + 1
 
     total = 0
+    for sku, count in counts.items():
+        if sku in offers:
+            offer_count, offer_price = offers[sku]
+
 
 

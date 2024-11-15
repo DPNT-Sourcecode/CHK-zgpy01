@@ -15,4 +15,5 @@ def checkout(skus):
         'B': (2, 45),
     }
 
-    
+    if not isinstance(skus, str) and not all(sku in prices for sku in skus):
+        return -1

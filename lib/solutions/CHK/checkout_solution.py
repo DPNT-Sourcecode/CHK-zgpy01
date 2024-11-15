@@ -28,6 +28,11 @@ def checkout(skus):
     for sku, count in counts.items():
         if sku in offers:
             offer_count, offer_price = offers[sku]
+            total += (count // offer_count) * offer_price
+            total += (count % offer_count) * prices[sku]
+        else:
+            total += count * prices[sku]
+    return total
 
 
 

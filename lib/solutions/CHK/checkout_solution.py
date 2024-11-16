@@ -53,6 +53,13 @@ def checkout(skus):
 
     total = 0
 
+    group_items = []
+    for sku in group_discount_items:
+        count = counts.get(sku, 0)
+        price = prices[sku]
+        group_items += [(sku, price)] * count
+    group_items.sort(lambda key: key[1], reverse=True)
+
     for sku, count in counts.items():
         if sku in offers:
             for offer_count, offer_price in offers[sku]:
@@ -62,3 +69,4 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
+

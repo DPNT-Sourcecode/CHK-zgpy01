@@ -1,5 +1,3 @@
-
-
 # noinspection PyUnusedLocal
 # skus = unicode string
 def checkout(skus):
@@ -52,4 +50,3 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
-

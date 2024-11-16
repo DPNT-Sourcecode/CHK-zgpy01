@@ -31,6 +31,8 @@ def checkout(skus):
 
     group_discount_items = ('S', 'T', 'X', 'Y', 'Z')
 
+    group_price = 45
+
     if not isinstance(skus, str) or not all(char in prices for char in skus):
         return -1
 
@@ -58,10 +60,13 @@ def checkout(skus):
         count = counts.get(sku, 0)
         price = prices[sku]
         group_items += [{'sku': sku, 'price': price}] * count
-    group_items.sort(lambda key: key['price'], reverse=True)
+    group_items.sort(key=lambda x: x['price'], reverse=True)
     num_groups = len(group_items) // 3
     for i in range(num_groups):
-        group = 
+        group = group_items[i * 3 : (i + 1) * 3]
+        for item in group:
+            counts[item['sku']] -= 1
+        total += group_price
 
     for sku, count in counts.items():
         if count <= 0:
@@ -74,6 +79,7 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
+
 
 
 

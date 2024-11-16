@@ -17,7 +17,8 @@ def checkout(skus):
     }
 
     free_offers = {
-        'E': ('B', 2)
+        'E': ('B', 2),
+        'F': ('F', 2),
     }
 
     if not isinstance(skus, str) or not all(char in prices for char in skus):
@@ -45,3 +46,4 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
+

@@ -31,7 +31,8 @@ def checkout(skus):
     for free_sku, (required_sku, required_count) in free_offers.items():
         if free_sku in counts:
             free_items = counts[free_sku] // required_count
-            counts[required_sku] = max(0, counts.get(required_sku, 0) - free_items)
+            if required_sku in counts:
+                counts[required_sku] = max(0, counts.get(required_sku, 0) - free_items)
 
     total = 0
 
@@ -40,10 +41,10 @@ def checkout(skus):
             for offer_count, offer_price in offers[sku]:
                 total += (count // offer_count) * offer_price
                 count = count % offer_count
-            total += count * prices[sku]
         else:
             total += count * prices[sku]
     return total
+
 
 
 

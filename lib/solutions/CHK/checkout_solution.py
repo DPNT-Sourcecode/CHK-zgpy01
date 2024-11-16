@@ -2,7 +2,7 @@
 
 # noinspection PyUnusedLocal
 # skus = unicode string
-def checkout(skus):
+def my_checkout(skus):
     prices = {
         'A': 50,
         'B': 30,

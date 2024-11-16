@@ -57,10 +57,11 @@ def checkout(skus):
     for sku in group_discount_items:
         count = counts.get(sku, 0)
         price = prices[sku]
-        group_items += [(sku, price)] * count
-    group_items.sort(lambda key: key[1], reverse=True)
+        group_items += [{'sku': sku, 'price': price}] * count
+    group_items.sort(lambda key: key['price'], reverse=True)
     num_groups = len(group_items) // 3
-
+    for i in range(num_groups):
+        group = 
 
     for sku, count in counts.items():
         if count <= 0:
@@ -73,5 +74,6 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
+
 
 

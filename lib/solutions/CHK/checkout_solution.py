@@ -29,6 +29,8 @@ def checkout(skus):
         'U': ('U', 3),
     }
 
+    group_discount_items = ('S', 'T', 'X', 'Y', 'Z')
+
     if not isinstance(skus, str) or not all(char in prices for char in skus):
         return -1
 
@@ -60,7 +62,3 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
-
-
-
-

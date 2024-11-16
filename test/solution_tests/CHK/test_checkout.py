@@ -6,4 +6,3 @@ class TestCheckout():
         assert checkout_solution.checkout('HHHHH') == 45
         assert checkout_solution.checkout('VV') == 90
         assert checkout_solution.checkout('ABCDX') == 225
-

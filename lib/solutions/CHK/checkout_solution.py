@@ -11,8 +11,12 @@ def checkout(skus):
     }
 
     offers = {
-        'A': (3, 130),
-        'B': (2, 45),
+        'A': [(5, 200), (3, 130)],
+        'B': [(2, 45)],
+    }
+
+    multi_offers = {
+        'E': ('B', 2)
     }
 
     if not isinstance(skus, str) or not all(char in prices for char in skus):
@@ -33,5 +37,3 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
-
-

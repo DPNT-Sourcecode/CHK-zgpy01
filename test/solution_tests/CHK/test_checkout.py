@@ -7,4 +7,3 @@ class TestCheckout():
         assert checkout_solution.checkout('ABC') == 100
         assert checkout_solution.checkout(123) == -1
         assert checkout_solution.checkout('ABCa') == -1
-

@@ -53,7 +53,4 @@ def checkout(skus):
             total += count * prices[sku]
     return total
 
-
-
-
-
+## why is the code not deploying?!

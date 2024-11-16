@@ -10,4 +10,3 @@ class TestCheckout():
         assert checkout_solution.checkout('AAAAAA') == 250
         assert checkout_solution.checkout('FFF') == 20
         assert checkout_solution.checkout('AAABBCDFFF') == 230
-

@@ -57,13 +57,7 @@ from runner.user_input_action import get_user_input
 
 runner = QueueBasedImplementationRunnerBuilder()\
     .set_config(Utils.get_runner_config())\
-    .with_solution_for('sum', sum_solution.compute)\
-    .with_solution_for('hello', hello_solution.hello)\
-    .with_solution_for('array_sum', array_sum.compute)\
-    .with_solution_for('int_range', int_range.generate)\
-    .with_solution_for('fizz_buzz', fizz_buzz_solution.fizz_buzz)\
-    .with_solution_for('checkout', checkout_solution.my_checkout)\
-    .with_solution_for('checklite', checklite_solution.checklite)\
+    .with_solution_for('checkout', checkout_solution.checkout)\
     .create()
 
 ChallengeSession\
@@ -71,4 +65,5 @@ ChallengeSession\
     .with_config(Utils.get_config())\
     .with_action_provider(lambda: get_user_input(sys.argv[1:]))\
     .start()
+
 

@@ -15,7 +15,7 @@ def checkout(skus):
         'B': [(2, 45)],
     }
 
-    multi_offers = {
+    free_offers = {
         'E': ('B', 2)
     }
 
@@ -25,10 +25,15 @@ def checkout(skus):
     counts = {}
 
     for sku in skus:
-        if sku in prices:
-            counts[sku] = counts.get(sku, 0) + 1
+        counts[sku] = counts.get(sku, 0) + 1
+
+    for free_sku, (required_sku, required_count) in free_offers.items():
+        if free_sku in counts:
+            free_items = counts[free_sku] // required_count
+            counts[required_sku] = max(0, counts.get(required_sku, 0) - free_items)
 
     total = 0
+
     for sku, count in counts.items():
         if sku in offers:
             offer_count, offer_price = offers[sku]
@@ -37,3 +42,4 @@ def checkout(skus):
         else:
             total += count * prices[sku]
     return total
+
